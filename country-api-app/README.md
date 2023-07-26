@@ -1,6 +1,9 @@
 # Preview images of the Country API App
-
-
+![Screenshot (6)](https://github.com/luckycungwa/countriesAPI-app/assets/36919645/d35ed6a5-9bab-4140-a44f-6ffadf76359c)
+![Screenshot (5)](https://github.com/luckycungwa/countriesAPI-app/assets/36919645/2b8f21b9-142f-4a50-ad5a-a35bb7fedd1b)
+![Screenshot (4)](https://github.com/luckycungwa/countriesAPI-app/assets/36919645/5053c446-8f33-4292-81d9-d74b74732100)
+![Screenshot (3)](https://github.com/luckycungwa/countriesAPI-app/assets/36919645/27bd3895-61a3-4f37-9f6f-04a08540f41c)
+![Screenshot (2)](https://github.com/luckycungwa/countriesAPI-app/assets/36919645/1b6b0052-cb9f-4ff5-ae7d-74894375486d)
 
 # Getting Started with Create React App
 
