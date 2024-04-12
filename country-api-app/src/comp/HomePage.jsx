@@ -51,12 +51,12 @@ const HomePage = () => {
   return (
     // search & list countries
     <>
-      <div class="search-field stick right">
+      <div className="search-field stick right">
         <span className="icon">&#9906;</span>
         <input
           placeholder="Search..."
           type="search"
-          class="search-input "
+          className="search-input "
           onChange={handleSearch}
         />
         <br />
