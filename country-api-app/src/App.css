@@ -17,6 +17,19 @@
   font-size: calc(10px + 2vmin);
   color: #222222;
 }
+
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+} 
+a:hover { 
+  text-decoration: none; 
+} 
+a:active { 
+  text-decoration: none; 
+}
 /* ******************************* */
 
 /* SEARCH INPUT STUFF */
@@ -67,8 +80,8 @@ input:hover {
   display: grid;
   grid-template-rows: repeat(auto-fit, 1fr);
   grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-
+  gap: 60px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -119,39 +132,80 @@ p {
 .title {
   color: #111;
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: .5px;
+  line-height: normal;
+  margin: 16px 0 16px 0px;
+  width: 100% !important;
+  text-wrap: wrap;
+  /* Limit text overflow (trancate text) | for the purpose of card size (UI)*/
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+ -webkit-line-clamp: 2;
+ display: -webkit-box;
+}
+.country-name {
+  width: 100px;
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
   font-weight: bold;
   letter-spacing: 1px;
-  line-height: 1;
+  z-index: 1;
+  padding: 0;
 }
 
 ul {
   list-style: none;
   left: 0;
-  margin-left: 0px;
+  /* margin-left: 0px; */
   padding: 0;
+  margin: 0;
 }
 
 /* Card & flags + contents */
 .card {
-  width: 220px;
-  min-height: 350px;
-  padding: 0.8em;
-  background: #ffffff;
-  position: relative;
-  overflow: visible;
-  box-shadow: 0 1px 3px #0000001f, 0 1px 2px rgba(0, #0000003d);
-  flex-wrap: wrap;
-  box-shadow: #0000001a 0px 20px 25px -5px, #0000000a 0px 10px 10px -5px;
+  width: 210px;
+  max-height: 280px;
   display: flex;
+  flex-wrap: wrap;
+  box-shadow: #00000031 0px 12px 15px -2px, rgba(0, 0, 0, 0.029) 0px 5px 5px -2px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  text-decoration: none;
+  
+}
+
+.card:hover {
+  transform: scale(1.01);
+  flex-wrap: wrap;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  box-shadow: #0000000e 0px 20px 25px -5px, #0000000a 0px 10px 10px -5px;
+  
 }
 
 .flag-img {
   height: 100%;
   width: 100%;
+  object-fit: fill;
+  overflow: hidden;
+  border-radius: 12px;
+  
+}
+.main-flag {
+  height: 100dvh;
+  width: 100dvw;
   border-radius: 0.4rem;
   object-fit: fill;
   overflow: visible;
+  border-radius: 12px;
+  
 }
 
 .country-img {
@@ -161,23 +215,42 @@ ul {
   box-shadow: #64646f43 0px 7px 29px 0px;
 }
 
-.flag-img:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 1px 3px #1b1b1b1f, 0 1px 2px rgba(0, #1b1b1b3d);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
+
 
 .card-img {
+  display: flex;
   width: 100%;
   height: 140px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  
 }
 
 /* car d information/ text */
 .info {
-  padding-top: 6%;
+  padding: 0 16px 0 16px;
+  padding-top: 0;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: self-start;
+  text-align: left;
+  font-weight: bold;
+  
+}
+
+.text {
+  text-align: left;
+  margin-bottom: 2px;
+  font-size: 12px;
+  line-height: normal;
+  font-weight: normal;
+  /* gap when there's an icon */
   flex-direction: row;
-  display: inline-flex;
+  gap: 50px;
+  justify-content: space-around;
 }
 
 .glass {
@@ -204,12 +277,48 @@ ul {
   gap: 46px;
 
   justify-content: center;
+  align-items: center;
 }
 .wrap{
   /* flex-grow: 1; */
   width: 30%;
   flex-wrap: wrap;
   word-wrap: break-word;
+}
+.main-wrap{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrap-info{
+  text-align: center; 
+  background-color: #a15555;
+  position: absolute;
+  width: 90%;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  font-weight: bolder;
+  font-size: 50px;
+  color: #3a3a3a;
+}
+
+.wrap-text {
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+
+text-align: center;  font-size: 180px;
+}
+
+.country-paragraph {
+  /* text-align: center; */
+  font-weight: bolder;
+  /* font-size: 20px; */
+  color: #000000;
+  text-decoration: none;
+  list-style: none;
 }
 
 

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { FaCity, FaUserGroup } from "react-icons/fa6";
+import { SlGlobe } from "react-icons/sl";
 const HomePage = () => {
   // set up country state | Array
   const [countries, setCountries] = useState([]);
@@ -14,7 +15,7 @@ const HomePage = () => {
     // Function to fetch data from the API
     const fetchCountries = async () => {
       try {
-        const response = await fetch("https://restcountries.com/v3.1/all");   //fetch all countries
+        const response = await fetch("https://restcountries.com/v3.1/all"); //fetch all countries
         const data = await response.json();
         setCountries(data);
         // fetch all countries bydefault
@@ -51,7 +52,7 @@ const HomePage = () => {
     // search & list countries
     <>
       <div class="search-field stick right">
-          <span className="icon">&#9906;</span>
+        <span className="icon">&#9906;</span>
         <input
           placeholder="Search..."
           type="search"
@@ -63,10 +64,11 @@ const HomePage = () => {
       </div>
 
       <div className="">
-      <br/>
-      <div className="App"><h1>WHERE IN THE 'HELLO' WORLD?</h1></div>
+        <br />
+        <div className="App">
+          <h1>WHERE IN THE 'HELLO' WORLD?</h1>
+        </div>
         <div className="info-container">
-        
           {filteredCountries.map((country) => (
             <div className="card" key={country.name.common}>
               {/* Redirect when flag image is clicked */}
@@ -78,17 +80,17 @@ const HomePage = () => {
                     alt={`Flag of ${country.name.common}`}
                   />
                 </div>
+                {/* Country info */}
+                <div className="info">
+                  <ul>
+                    <p className="title">{country.name.common}</p>
+                    <p className="text"><FaUserGroup /> { country.population}</p>
+                    <p className="text"> <FaCity/> { country.capital}</p>
+                    <p className="text"> <SlGlobe /> { country.region}</p>
+                    <br />
+                  </ul>
+                </div>
               </Link>
-              {/* Country info */}
-              <div className="info">
-                <ul>
-                  <li className="title">{country.name.common}</li>
-                  <br />
-                  <li>Population: {country.population}</li>
-                  <li>Capital: {country.capital}</li>
-                  <li>Region: {country.region}</li>
-                </ul>
-              </div>
             </div>
           ))}
         </div>
