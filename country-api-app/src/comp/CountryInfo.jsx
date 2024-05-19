@@ -2,10 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CardSpinner from "./CardSpinner";
-import { Tooltip } from "react-tooltip";
 import InfoCard from "./InfoCard";
 import { FaArrowLeft } from "react-icons/fa6";
-// import HomePage from "./HomePage";
 
 const CountryInfo = () => {
   const { countryName } = useParams();
@@ -79,7 +77,7 @@ const CountryInfo = () => {
 
   return (
     <div className="country-details">
-      <div>
+      {/* <div> */}
         {" "}
         {/* RETURN TO HOME BUTTON */}
         <button className="scroll-back" onClick={handleGoBack}>
@@ -87,14 +85,14 @@ const CountryInfo = () => {
             <FaArrowLeft />{" "}
           </span>
         </button>
-      </div>
+      {/* </div> */}
       <div className="section">
         <div className="country-img">
           {/* aternary if statement on hover alternate between flag & coat of arms */}
           <CardSpinner />
 
           <div className="flag-colors">
-          {/* display flag colors */}
+            {/* display flag colors */}
             {flagColors.map((color, index) => (
               <div
                 className="flag-color"
@@ -106,10 +104,11 @@ const CountryInfo = () => {
             ))}
           </div>
         </div>
-        <div className="country-info">
-          <ul>
-            <li className="h1">{countryDetails.name.common}</li>
 
+        <div className="country-info">
+          <h3 className="h1">{countryDetails.name.common}</h3>
+          <br></br>
+          <div className="info2">
             <p>Native Name: {countryDetails.name.common}</p>
             {capital && capital.length > 0 && (
               <p>Capital(s): {capital.join(", ")}</p>
@@ -140,34 +139,33 @@ const CountryInfo = () => {
             {/* {tld && tld.length > 0 && (
             <p>Top Level Domain (TLD): {tld.join(", ")}</p>
           )} */}
+          </div>
 
-            {/* <br /> */}
-          </ul>
           <br />
-          <h2>Description</h2>
-          <p className="paragraph">
-            Welcome to the enchanting world of {countryDetails.name.official},
-            where {population} beautiful people call home amidst the{" "}
-            {countryDetails.name.official}'s embrace. Situated in {subregion},
-            this land speaks {Object.values(languages).join(", ")} as their
-            cultural symphony, echoing tales of unity and diversity. From its
-            bustling cities to its serene countryside,{" "}
-            {countryDetails.name.official} beckons with promises of discovery
-            and wonder. Whether you're drawn to its historical landmarks,
-            natural wonders, or vibrant cultural tapestry, there's something
-            here to captivate every heart. Come, explore the magic of{" "}
-            {countryDetails.name.official} and immerse yourself in its beauty.
-            With their Top level domain as "{tld}".
-          </p>
-          <br />
+          <div className="info2">
+            <h2>Description</h2>
+            <p className="paragraph">
+              Welcome to the enchanting world of {countryDetails.name.official},
+              where {population} beautiful people call home amidst the{" "}
+              {countryDetails.name.official}'s embrace. Situated in {subregion},
+              this land speaks {Object.values(languages).join(", ")} as their
+              cultural symphony, echoing tales of unity and diversity. From its
+              bustling cities to its serene countryside,{" "}
+              {countryDetails.name.official} beckons with promises of discovery
+              and wonder. Whether you're drawn to its historical landmarks,
+              natural wonders, or vibrant cultural tapestry, there's something
+              here to captivate every heart. Come, explore the magic of{" "}
+              {countryDetails.name.official} and immerse yourself in its beauty.
+              With their Top level domain as "{tld}".
+            </p>
+            <br />
+          </div>
         </div>
       </div>
 
       {/* new scction */}
       <div>
-        <div>
-          <InfoCard countryName={countryName} />
-        </div>
+        {/* <InfoCard countryName={countryName} /> */}
       </div>
     </div>
   );

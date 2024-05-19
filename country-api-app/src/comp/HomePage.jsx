@@ -65,11 +65,11 @@ const HomePage = () => {
             )}
           >
             <div className="header">
-              <h1 className="header-title">WHERE IN THE HELLO WORLD</h1>
+              <h1 className="header-title">WHERE IN THE HELLO WORLD?</h1>
               <h5 className="text3">
                 {" "}
                 Get ready to embark on an unforgettable expedition as you
-                uncover the beauty and wonder of our planet.
+                uncover the beauty and wonders of our planet.
               </h5>
               <div className="header-content">
                 <Searchbar onSearch={handleSearch} />
@@ -120,7 +120,9 @@ const HomePage = () => {
                     </p>
                     <p className="text">
                       {" "}
-                      <FaCity /> {country.capital}
+                      <FaCity />  
+                      {/* seperate with comma if there is more than 1 capital */}
+                      {" "}{country.capital && country.capital.join(", ")}
                     </p>
                     <p className="text">
                       {" "}
