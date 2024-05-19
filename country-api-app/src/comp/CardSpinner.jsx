@@ -52,21 +52,19 @@ const CardSpinner = () => {
         <div className="card-inner">
           <div className="card-front">
             <img
-              className="flag-img"
+              className="view-flag"
               src={countryDetails.flags.svg}
               alt={`Flag of ${countryDetails.name}`}
             />
           </div>
           <div className="card-back">
           {/* tooltip when user hovers over coat of arms */}
-           
-            <p className="card-title">coat of arms</p>
               <img
-                className="flag-img"
+                className="flag-img-back"
                 src={countryDetails.coatOfArms.png}
                 alt={` ${countryDetails.name.common} coat of arms`}
               />
-              
+              {/* <p className="card-title">coat of arms</p> */}
           </div>
         </div>
       </div>

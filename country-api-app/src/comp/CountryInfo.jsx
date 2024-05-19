@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CardSpinner from "./CardSpinner";
 import { Tooltip } from "react-tooltip";
+import InfoCard from "./InfoCard";
+import { FaArrowLeft } from "react-icons/fa6";
 // import HomePage from "./HomePage";
 
 const CountryInfo = () => {
@@ -19,7 +21,7 @@ const CountryInfo = () => {
         );
         const data = await response.json();
         setCountryDetails(data[0]);
-    
+
         // Fetch the flag colors JSON file
         const flagColorsResponse = await fetch(
           // fetch country-colors.json
@@ -45,13 +47,16 @@ const CountryInfo = () => {
         // Handle the error (e.g., display an error message)
       }
     };
-    
 
     fetchCountryDetails();
   }, [countryName]);
 
   if (!countryDetails) {
-    return <h2>Loading country details...</h2>;
+    return (
+      <div className="App-header">
+        <h2>Loading country details...</h2>
+      </div>
+    );
   }
 
   //Initialize more country details
@@ -74,55 +79,72 @@ const CountryInfo = () => {
 
   return (
     <div className="country-details">
-      <div className="country-img">
-        {/* aternary if statement on hover alternate between flag & coat of arms */}
-        <CardSpinner />
-
-        <div className="flag-colors">
-          {flagColors.map((color, index) => (
-            <div className="flag-color" key={index} style={{ backgroundColor: color }}>
-              <p className="flag-color-text">{color}</p>
-            </div>
-          ))}
-        </div>
-        
+      <div>
+        {" "}
+        {/* RETURN TO HOME BUTTON */}
+        <button className="scroll-back" onClick={handleGoBack}>
+          <span>
+            <FaArrowLeft />{" "}
+          </span>
+        </button>
       </div>
-      <div className="wrap">
-        <ul>
-          <li className="h1">{countryDetails.name.common}</li>
+      <div className="section">
+        <div className="country-img">
+          {/* aternary if statement on hover alternate between flag & coat of arms */}
+          <CardSpinner />
 
-          <p>Native Name: {countryDetails.name.common}</p>
-          {capital && capital.length > 0 && (
-            <p>Capital(s): {capital.join(", ")}</p>
-          )}
-          {/* <p>Top Level Domain: {tld}</p> */}
-          {/* <p>Area: {countryDetails.area}</p> */}
+          <div className="flag-colors">
+          {/* display flag colors */}
+            {flagColors.map((color, index) => (
+              <div
+                className="flag-color"
+                key={index}
+                style={{ backgroundColor: color }}
+              >
+                <p className="flag-color-text">{color}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="country-info">
+          <ul>
+            <li className="h1">{countryDetails.name.common}</li>
 
-          <p>Population: {population}</p>
-          <p>Region: {region}</p>
+            <p>Native Name: {countryDetails.name.common}</p>
+            {capital && capital.length > 0 && (
+              <p>Capital(s): {capital.join(", ")}</p>
+            )}
+            {/* <p>Top Level Domain: {tld}</p> */}
+            {/* <p>Area: {countryDetails.area}</p> */}
 
-          {/* <p>Currency: {currency && currency.name}</p> */}
-          {/* <p>Sub-region: {subregion}</p> */}
+            <p>Population: {population}</p>
+            <p>Region: {region}</p>
 
-          {/* INCASE DATA HAS MULTIPLE RESULTS AVAILABLE & SEPERATE BY COMMA| maybe add currency, abbreviation, president, etc.*/}
-          {/* --------------------------- LANGUAGE(s) -------------------------- */}
-          {languages && Object.values(languages).length > 0 && (
-            <p>Language(s): {Object.values(languages).join(", ")}</p>
-          )}
-          {/* --------------------------- NATIONALITY(ies) -------------------------- */}
-          {demonyms && demonyms.common && (
-            <li>Nationality: {demonyms.common}</li>
-          )}
-          {/* ------ CALL CODE(s) +27 XXX | Currently not working for most (REMOVE OR MODIFY)-------- */}
-          {callingCodes && callingCodes.length > 0 && (
-            <p>Calling Codes: {callingCodes.join(", ")}</p>
-          )}
-          {/* -------------------------- TLD(s) -------------------------- */}
-          {/* {tld && tld.length > 0 && (
+            {/* <p>Currency: {currency && currency.name}</p> */}
+            {/* <p>Sub-region: {subregion}</p> */}
+
+            {/* INCASE DATA HAS MULTIPLE RESULTS AVAILABLE & SEPERATE BY COMMA| maybe add currency, abbreviation, president, etc.*/}
+            {/* --------------------------- LANGUAGE(s) -------------------------- */}
+            {languages && Object.values(languages).length > 0 && (
+              <p>Language(s): {Object.values(languages).join(", ")}</p>
+            )}
+            {/* --------------------------- NATIONALITY(ies) -------------------------- */}
+            {demonyms && demonyms.common && (
+              <li>Nationality: {demonyms.common}</li>
+            )}
+            {/* ------ CALL CODE(s) +27 XXX | Currently not working for most (REMOVE OR MODIFY)-------- */}
+            {callingCodes && callingCodes.length > 0 && (
+              <p>Calling Codes: {callingCodes.join(", ")}</p>
+            )}
+            {/* -------------------------- TLD(s) -------------------------- */}
+            {/* {tld && tld.length > 0 && (
             <p>Top Level Domain (TLD): {tld.join(", ")}</p>
           )} */}
 
-          {/* <br /> */}
+            {/* <br /> */}
+          </ul>
+          <br />
+          <h2>Description</h2>
           <p className="paragraph">
             Welcome to the enchanting world of {countryDetails.name.official},
             where {population} beautiful people call home amidst the{" "}
@@ -135,18 +157,17 @@ const CountryInfo = () => {
             natural wonders, or vibrant cultural tapestry, there's something
             here to captivate every heart. Come, explore the magic of{" "}
             {countryDetails.name.official} and immerse yourself in its beauty.
-            With their Top level domain as "{tld}", embark on a journey where
-            every moment is an invitation to embrace the essence of this
-            remarkable land.
+            With their Top level domain as "{tld}".
           </p>
-        </ul>
-        <br />
+          <br />
+        </div>
+      </div>
 
-        {/* RETURN TO HOME BUTTON */}
-        {/* <button className="cta-btn" onClick={handleGoBack}>
-          GO BACK
-        </button> */}
-        <br />
+      {/* new scction */}
+      <div>
+        <div>
+          <InfoCard countryName={countryName} />
+        </div>
       </div>
     </div>
   );

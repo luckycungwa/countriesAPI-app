@@ -8,22 +8,8 @@ function App() {
   return (
     <>
       <Router>
-        <div className="">
-          <nav className="stick menu">
-            <input type="checkbox" className="menu"/>
-            <label></label>
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/">About</a>
-              </li>
-              <li>
-                <a href="/">3D Map</a>
-              </li>
-            </ul>
-          </nav>
+        <div className="App">
+          
           <header className="App-header">
             <Switch>
               <Route exact path="/" component={HomePage} />
